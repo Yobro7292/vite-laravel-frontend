@@ -1,26 +1,129 @@
 {
   "env": {
     "browser": true,
-    "es2021": true
+    "commonjs": true,
+    "es6": true,
+    "node": true
   },
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "standard-with-typescript",
-    "plugin:react-hooks/recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking",
-    "plugin:prettier/recommended"
-  ],
-  "overrides": [],
+  "root": false,
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaVersion": "latest",
+    "ecmaVersion": 2018,
     "sourceType": "module",
-    "project": "./tsconfig.json"
+    "ecmaFeatures": {
+      "jsx": true
+    }
   },
-  "plugins": ["react", "@typescript-eslint"],
+  "extends": [
+    "prettier",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended"
+  ],
+  "ignorePatterns": ["fileTransform.js"],
+  "overrides": [],
+  "plugins": [
+    "react",
+    "react-hooks",
+    "prettier",
+    "@typescript-eslint",
+    "cypress"
+  ],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      },
+      "typescript": {}
+    }
+  },
   "rules": {
-    "prettier/prettier": "error"
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": ["error"],
+    "@typescript-eslint/no-explicit-any": "off",
+    "react/prop-types": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
+    "no-console": 0,
+    "no-underscore-dangle": "off",
+    "import/no-unresolved": "warn",
+    "react/jsx-filename-extension": [
+      2,
+      {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    ],
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/require-default-props": "off",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "ts": "never",
+        "tsx": "never",
+        "js": "never",
+        "jsx": "never",
+        "mjs": "never"
+      }
+    ],
+    "import/no-extraneous-dependencies": [
+      "warn",
+      {
+        "devDependencies": [
+          "vite.config.ts",
+          "jest.setup.ts",
+          "cypress.config.ts",
+          ".storybook/**/*.*",
+          "cypress/**/*.ts",
+          "src/__mocks__/**/*.*",
+          "src/**/*.test.ts",
+          "src/**/*.test.tsx",
+          "src/**/*.stories.*",
+          "src/shared/config/**/*.ts"
+        ]
+      }
+    ],
+    "react/forbid-dom-props": [1, { "forbid": ["style"] }],
+    "react/forbid-component-props": [1, { "forbid": ["style"] }],
+    "react/jsx-curly-newline": "off",
+    "react/no-unused-prop-types": "warn",
+    "react/no-array-index-key": "warn",
+    "@typescript-eslint/ban-ts-comment": "warn",
+    "no-useless-escape": "warn",
+    "import/prefer-default-export": "warn",
+    "no-nested-ternary": "warn",
+    "camelcase": "warn",
+    "import/order": "warn",
+    "react/destructuring-assignment": "warn",
+    "jsx-a11y/no-noninteractive-tabindex": "warn",
+    "jsx-a11y/tabindex-no-positive": "warn",
+    "react/jsx-wrap-multilines": "off",
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": ["function-declaration", "arrow-function"]
+      }
+    ],
+    "no-shadow": "off",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-shadow": ["warn"],
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "args": "after-used",
+        "ignoreRestSiblings": false,
+        "argsIgnorePattern": "^_",
+        "destructuredArrayIgnorePattern": "^_"
+      }
+    ]
   }
 }
