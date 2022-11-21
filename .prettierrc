@@ -1,5 +1,19 @@
 {
-  "semi": true,
-  "singleQuote": true,
-  "tabWidth": 2
+  "semi": false,
+  "overrides": [
+    {
+      "files": [
+        "*.html",
+        "legacy/**/*.js",
+        "./src/**/*.ts",
+        "./src/**/*.tsx",
+        "./src/**/*.jsx",
+        "./src/**/*.{js,jsx,ts,tsx}"
+      ],
+      "options": {
+        "tabWidth": 2,
+        "semi": true
+      }
+    }
+  ]
 }

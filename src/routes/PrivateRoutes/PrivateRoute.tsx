@@ -1,19 +1,7 @@
-import { Navigate, Outlet } from 'react-router-dom';
-
-const useAuth = () => {
-  const user = localStorage.getItem('token');
-  if (user) {
-    console.log('Token found in Private');
-    return true;
-  } else {
-    return false;
-  }
-};
+import { Navigate, Outlet } from "react-router-dom";
 
 const PrivateRoutes = (props: any) => {
-  const auth = useAuth();
-
-  return auth ? <Outlet /> : <Navigate to="/login" />;
+  return props.auth ? <Outlet /> : <Navigate to="/login" />;
 };
 
 export default PrivateRoutes;
