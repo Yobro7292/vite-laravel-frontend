@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useAppDispatch } from "../../app/store";
-import { setIsLogin, setToken } from "../../features/loginSlice";
+import { setIsLogin, setToken, setUser } from "../../features/loginSlice";
 import { useLoginMutation } from "../../services/AuthApi";
 
 function Login() {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
-  const [loginStatus, response] = useLoginMutation();
+  const [loginStatus, response] = useLoginMutation<any>();
   const dispatch = useAppDispatch();
   const onLogin = () => {
     const data = {
@@ -17,6 +17,9 @@ function Login() {
     .unwrap()
     .then((res) => {
       if(res && res.token){
+        if(res.user){
+          dispatch(setUser(res.user));
+        }
         dispatch(setToken(res.token));
         dispatch(setIsLogin(true));
       }

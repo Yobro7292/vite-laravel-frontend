@@ -1,4 +1,4 @@
-const Loading = () => {
+const Loading = (props:{message:string}) => {
   return (
     <div className="flex justify-center items-center">
       <div role="status">
@@ -18,7 +18,7 @@ const Loading = () => {
           />
         </svg>
         <span className="font-light text-stone-300 capitalize">
-          verifying token...
+          {props.message}
         </span>
       </div>
     </div>

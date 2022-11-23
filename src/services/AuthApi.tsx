@@ -14,8 +14,16 @@ const AuthApi = createApi({
   }),
   tagTypes: ['Post'],
   endpoints: (builder) => ({
-    verifyToken: builder.query<unknown, string>({
-      query: (token) => '/',
+    verifyToken: builder.mutation({
+      query: (payload) => ({
+        url: '/verify-user-token',
+        method: 'POST',
+        body: payload,
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      }),
+      invalidatesTags: ['Post'],
     }),
     login: builder.mutation({
       query: (payload) => ({
@@ -30,6 +38,6 @@ const AuthApi = createApi({
     }),
   }),
 });
-export const { useLoginMutation } = AuthApi;
+export const { useLoginMutation, useVerifyTokenMutation } = AuthApi;
 
 export default AuthApi;
