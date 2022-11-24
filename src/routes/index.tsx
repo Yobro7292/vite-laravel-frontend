@@ -7,6 +7,7 @@ import { setIsLogin, setToken, setUser } from "../features/loginSlice";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import NotFound from "../Pages/NotFound/NotFound";
+import Register from "../Pages/Register/Register";
 import AuthApi, { useVerifyTokenMutation } from "../services/AuthApi";
 import PrivateRoutes from "./PrivateRoutes/PrivateRoute";
 import PublicRoutes from "./PublicRoutes/PublicRoutes";
@@ -80,13 +81,14 @@ function MainRoutes() {
 
           {/* these are private (protected) routes */}
           <Route path="/" element={<PrivateRoutes auth={isLogin} />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/dashboard" element={<Home />} />
+            <Route path="/" element={<Home isVerified={isLogin} />} />
+            <Route path="/dashboard" element={<Home isVerified={isLogin} />} />
           </Route>
 
           {/* this is public route */}
-          <Route path="/login" element={<PublicRoutes auth={isLogin} />}>
+          <Route path="/" element={<PublicRoutes auth={isLogin} />}>
             <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           </Route>
 
           {/* if all routs are faild than show not found page 

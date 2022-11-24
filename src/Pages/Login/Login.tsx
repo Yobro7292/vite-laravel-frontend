@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { useAppDispatch } from "../../app/store";
 import { setIsLogin, setToken, setUser } from "../../features/loginSlice";
 import { useLoginMutation } from "../../services/AuthApi";
@@ -54,7 +55,12 @@ function Login() {
       >
         Login
       </button>
-      
+      <p className="text-white text-sm mt-6">Don't have account?
+      <Link to='/register'>
+        <span className="text-emerald-500 text-sm decoration-white decoration-solid">
+          {" "}Register Here</span>
+      </Link>
+      </p>
     </div>
   );
 }

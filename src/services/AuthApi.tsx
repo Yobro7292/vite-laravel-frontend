@@ -36,8 +36,19 @@ const AuthApi = createApi({
       }),
       invalidatesTags: ['Post'],
     }),
+    register: builder.mutation({
+      query: (payload) => ({
+        url: '/register',
+        method: 'POST',
+        body: payload,
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      }),
+      invalidatesTags: ['Post'],
+    }),
   }),
 });
-export const { useLoginMutation, useVerifyTokenMutation } = AuthApi;
+export const { useLoginMutation, useVerifyTokenMutation, useRegisterMutation } = AuthApi;
 
 export default AuthApi;
