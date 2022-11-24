@@ -47,8 +47,41 @@ const AuthApi = createApi({
       }),
       invalidatesTags: ['Post'],
     }),
+    forgetPassword: builder.mutation({
+      query: (payload) => ({
+        url: '/forget-password',
+        method: 'POST',
+        body: payload,
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      }),
+      invalidatesTags: ['Post'],
+    }),
+    verifyEmailToken: builder.mutation({
+      query: (payload) => ({
+        url: '/verify-email-token',
+        method: 'POST',
+        body: payload,
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      }),
+      invalidatesTags: ['Post'],
+    }),
+    resetPassword: builder.mutation({
+      query: (payload) => ({
+        url: '/reset-password',
+        method: 'POST',
+        body: payload,
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      }),
+      invalidatesTags: ['Post'],
+    }),
   }),
 });
-export const { useLoginMutation, useVerifyTokenMutation, useRegisterMutation } = AuthApi;
+export const { useLoginMutation, useVerifyTokenMutation, useRegisterMutation, useForgetPasswordMutation, useVerifyEmailTokenMutation, useResetPasswordMutation } = AuthApi;
 
 export default AuthApi;

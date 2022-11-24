@@ -8,6 +8,7 @@ import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import NotFound from "../Pages/NotFound/NotFound";
 import Register from "../Pages/Register/Register";
+import ResetPassword from "../Pages/ResetPassword/ResetPassword";
 import AuthApi, { useVerifyTokenMutation } from "../services/AuthApi";
 import PrivateRoutes from "./PrivateRoutes/PrivateRoute";
 import PublicRoutes from "./PublicRoutes/PublicRoutes";
@@ -89,6 +90,7 @@ function MainRoutes() {
           <Route path="/" element={<PublicRoutes auth={isLogin} />}>
             <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
           </Route>
 
           {/* if all routs are faild than show not found page 

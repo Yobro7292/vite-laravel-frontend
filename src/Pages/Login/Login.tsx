@@ -61,6 +61,12 @@ function Login() {
           {" "}Register Here</span>
       </Link>
       </p>
+      <p className="text-white text-sm mt-6">Forgot Password?
+      <Link to='/reset-password'>
+        <span className="text-emerald-500 text-sm decoration-white decoration-solid">
+          {" "}Reset Here</span>
+      </Link>
+      </p>
     </div>
   );
 }
